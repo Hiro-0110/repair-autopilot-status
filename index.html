@@ -1,20 +1,31 @@
 <!doctype html><html lang="ja"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta http-equiv="refresh" content="60"><title>Autopilot Status</title>
+<meta http-equiv="refresh" content="60"><title>Autopilot repair</title>
 <style>*{box-sizing:border-box}body{font-family:-apple-system,Helvetica,sans-serif;margin:0;background:#f4f6f8;color:#222;padding:14px;max-width:560px;margin:auto}
-h1{font-size:20px;margin:6px 0}.sub{color:#666;font-size:13px;margin-bottom:12px}
+h1{font-size:19px;margin:6px 0}.sub{color:#666;font-size:13px;margin-bottom:4px}.dl{font-size:13px;font-weight:600;margin-bottom:10px}
 .big{font-size:46px;font-weight:700;line-height:1}.banner{padding:10px 12px;border-radius:10px;color:#fff;font-weight:600;margin:10px 0}
+.tl{font-size:13px;background:#fff;border-radius:10px;padding:10px 12px;margin:10px 0}
 .card{background:#fff;border-radius:12px;padding:12px 14px;margin:10px 0;box-shadow:0 1px 4px rgba(0,0,0,.08)}
 .row{display:flex;align-items:center;gap:8px;font-size:16px}.pill{margin-left:auto;color:#fff;padding:3px 10px;border-radius:20px;font-size:12px}
 .bar{position:relative;background:#e6e9ec;border-radius:8px;height:28px;margin:8px 0;overflow:hidden}
 .fill{height:100%;border-radius:8px;transition:width .5s}.blab{position:absolute;left:0;right:0;top:5px;text-align:center;font-size:14px;font-weight:700;color:#111}
-.meta{color:#666;font-size:12px;margin-top:4px}</style></head><body>
+.meta{color:#555;font-size:12px;margin-top:4px;line-height:1.5}.log{font-family:ui-monospace,Menlo,monospace;font-size:10.5px;color:#444;margin-top:6px;line-height:1.5;word-break:break-all}</style></head><body>
 <h1>🛰️ Repair/Densify Autopilot</h1>
-<div class="sub">更新 2026-06-19 22:55:58 · 60秒ごと自動再読込 · 締切=日曜朝(密化完了まで)</div>
-<div class="banner" style="background:#2e7d32">🔧 repair 0% (0/1 shards)</div>
-<div class="card"><b>Overall — REPAIR (NOFF=0)  tail [732k,970k]</b>
-  <div class="big" style="color:#2e7d32">0%</div><div class="bar"><div class="fill" style="width:0%;background:#2e7d32"></div><span class="blab">0%</span></div>
-  <div class="meta">0/1 shards · ETA(修復): —</div><svg viewBox="0 0 320 60" width="100%" style="max-width:480px"><polyline fill="none" stroke="#1565c0" stroke-width="2" points="8.0,25.0 39.0,25.0 47.1,25.0 141.8,23.0 226.9,22.0 312.0,56.0"/></svg></div>
+<div class="sub">更新 2026-06-19 22:57:58 · 60秒自動再読込</div>
+<div class="dl" style="color:#333">⏰ 締切まで 1日 9時間 (2026-06-21 08:00)</div>
 
-<div class="card meta">2層監視: Layer1=launchd 5分tick(Opus4.8 ultrathink) / Layer2=watchdog 12分。進捗はrebalanceに依存しないtail全体被覆。<br>公開静的ページ(GitHub Pages)。機微情報なし。</div>
+<div class="banner" style="background:#2e7d32">▶ repair 71% (34/48)</div>
+<div class="tl"><span style="color:#1565c0;font-weight:600">▶ repair</span> › <span style="color:#bbb;font-weight:600">○ merge</span> › <span style="color:#bbb;font-weight:600">○ gdrive</span> › <span style="color:#bbb;font-weight:600">○ healthcheck</span> › <span style="color:#bbb;font-weight:600">○ densify</span></div>
+<div class="card"><b>Overall — repair (repair tail [732k,970k] across 3 machines)</b>
+  <div class="big" style="color:#2e7d32">71%</div>
+  <div class="bar"><div class="fill" style="width:71%;background:#2e7d32"></div><span class="blab">34/48 shards</span></div>
+  <div class="meta">ETA(現フェーズ): —</div></div>
+<div class="card"><div class="row"><b>ddat027</b>
+      <span class="pill" style="background:#2e7d32">RUNNING</span></div>
+      <div class="meta">julia=33 · shards=16 · err=0 · log 1292ss前<br>last: 807000-810000|keep2578 ok184 fail239 dens0 403s</div></div><div class="card"><div class="row"><b>ddat021</b>
+      <span class="pill" style="background:#2e7d32">RUNNING</span></div>
+      <div class="meta">julia=27 · shards=10 · err=0 · log 798ss前<br>last: 855000-859999|keep4288 ok309 fail403 dens0 987s</div></div><div class="card"><div class="row"><b>astro</b>
+      <span class="pill" style="background:#2e7d32">RUNNING</span></div>
+      <div class="meta">julia=29 · shards=8 · err=0 · log 699ss前<br>last: 920000-924999|keep4233 ok323 fail444 dens0 1076s</div></div><div class="card"><b>☁️ gdrive backup</b><div class="meta">repair_shards 192 · densify_shards 0 · merged 0</div></div><div class="card"><b>🧭 最近の動き</b><div class="log">2026-06-19 22:12:51 TICK: all 3 RUNNING healthy err=0. done_in_range ddat027=13/16(3 left) ddat021=8/16(8 left) astro=5/16(11 left). stats normal (keep~4270/repair~300/fail~410/dens=0). gdrive=152(astro44/ddat027107/ddat0211). No DEAD/STALLED. No rebalance yet (no machine DONE; ddat027 nearest ~3 sh<br>2026-06-19 22:19:01 TICK: repair in progress, all healthy. ddat027 RUNNING 14/16 (julia33,age31s,err0 last keep4261/ok318/fail421) | ddat021 RUNNING 8/16 (julia27,age433s,err0 keep4282/ok319/fail399) | astro RUNNING 5/16 (julia29,age848s,err0 keep4269/ok315/fail416). gdrive=164 (astro47/ddat027116/d<br>2026-06-19 22:24:45 TICK: all 3 RUNNING healthy err=0. ddat027 14/16 (last 797k-801k keep4261/ok318/fail421), ddat021 8/16 (last 845k keep4282/ok319/fail399, log_age799s mid-shard OK), astro 6/16 (last 915k keep4283/ok318/fail399). gdrive=169 (ddat027=116/astro=52/ddat021=1). No heal/rebalance neede<br>2026-06-19 22:31:07 tick: ALL RUNNING healthy. ddat027 15/16 (last 802k done,712s) julia33; ddat021 9/16 julia27; astro 6/16 (915k done,1105s) julia29 log_age451s(mid-shard,normal). err=0 all, stats in-range. gdrive=175(astro56/ddat027118/ddat021 1). No heal/rebalance: ddat027 not yet DONE(1 shard l<br>2026-06-19 22:38:44 TICK: ddat027 DONE(16/16) → REBALANCED onto astro tail [945000,970000] (own label, detached PID via rebal_ddat027.sh, julia=33 up). ddat021 RUNNING 9/16 (keep4286/rep270/fail444 OK). astro RUNNING 6/16 (keep4283/rep318/fail399 OK). gdrive seq backup in progress (total180 astro61/<br>[2026-06-19 22:48:01] TICK: repair in progress, all healthy err=0. ddat027 DONE own range[732k,810k]; rebal-helper ALREADY running on astro top-tail rows 945000-970000 (julia pid4409 ~18min, MACHINE=ddat027, 0 shards done yet/imminent). ddat021 RUNNING 9/16 [810k,890k] 7 left ~2h (NEW long pole). as</div></div>
+<div class="card meta">2層監視: Layer1=launchd 5分tick(Opus4.8 ultrathink, 復旧/再分散/フェーズ進行) · Layer2=watchdog 12分。進捗=tail全体被覆(rebalance非依存)。公開静的ページ(GitHub Pages), 機微情報なし。</div>
 </body></html>
